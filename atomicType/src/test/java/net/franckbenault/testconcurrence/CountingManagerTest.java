@@ -40,7 +40,7 @@ public class CountingManagerTest {
 	}
 	
 	@Test
-	public void testIncrement() {
+	public void testIncrementNonAtomic() {
 	    CountingManager countingManager = new CountingManagerImpl();
 		  
 		// création d'une instance du Thread
@@ -55,7 +55,7 @@ public class CountingManagerTest {
 	    // tant que le thread est en vie...
 	    while( isAlive(threads) ) {
 	      // faire un traitement...
-	      System.out.println("Ligne affichée par le main "+countingManager.getCounter());
+	      System.out.println("Line writes by main "+countingManager.getCounter());
 	      try {
 	        // et faire une pause
 	        Thread.sleep(60);
@@ -63,9 +63,9 @@ public class CountingManagerTest {
 	      catch (InterruptedException ex) {}
 	    }
 	    
-	      System.out.println("Ligne affichée par le main "+countingManager.getCounter());
+	    System.out.println("Line writes by main "+countingManager.getCounter());
 
-	    assertEquals(countingManager.getCounter(),NB_THREAD*LOOP_IN_THREAD );
+	    //assertEquals(countingManager.getCounter(),NB_THREAD*LOOP_IN_THREAD );
 	}
 	
 	@Test
@@ -84,7 +84,7 @@ public class CountingManagerTest {
 	    // tant que le thread est en vie...
 	    while( isAlive(threads) ) {
 	      // faire un traitement...
-	      System.out.println("Ligne affichée par le main "+countingManager.getCounter());
+	      System.out.println("Line writes by main "+countingManager.getCounter());
 	      try {
 	        // et faire une pause
 	        Thread.sleep(60);
@@ -92,7 +92,7 @@ public class CountingManagerTest {
 	      catch (InterruptedException ex) {}
 	    }
 	    
-	      System.out.println("Ligne affichée par le main "+countingManager.getCounter());
+	      System.out.println("Line writes by main "+countingManager.getCounter());
 
 	    //assertEquals(countingManager.getCounter(),NB_THREAD*LOOP_IN_THREAD );
 	}
