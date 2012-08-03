@@ -1,15 +1,10 @@
 package net.franckbenault.testconcurrence;
 
-public class CountingManager {
+public interface CountingManager {
 
-	private long counter;
 	
-	public void increment() {
-		counter++;
-	}
+	public void increment();
 	
-	public long getCounter() {
-		return counter;
-	}
+	public long getCounter();
 	
 }
