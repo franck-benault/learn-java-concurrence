@@ -11,7 +11,7 @@ import org.junit.Test;
 public class CountingManagerTest {
 	
 	private static final int NB_THREAD = 10;
-	private static final int LOOP_IN_THREAD = 250;
+	private static final int LOOP_IN_THREAD = 500;
 	
 
 	@BeforeClass
