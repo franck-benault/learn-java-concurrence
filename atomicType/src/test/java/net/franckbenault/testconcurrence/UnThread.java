@@ -27,4 +27,10 @@ public class UnThread extends Thread{
 	      catch (InterruptedException ex) {}
 	    }
 	  }	
+
+
+	public int getNumber() {
+		return number;
 	}
+
+}
