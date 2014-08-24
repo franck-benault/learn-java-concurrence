@@ -1,4 +1,6 @@
-package net.franckbenault.testconcurrence;
+package net.franckbenault.testconcurrence.impl;
+
+import net.franckbenault.testconcurrence.CountingManager;
 
 public class CountingManagerImpl implements CountingManager {
 

@@ -1,6 +1,11 @@
 package net.franckbenault.testconcurrence;
 
 import static org.junit.Assert.*;
+import net.franckbenault.testconcurrence.CountingManager;
+import net.franckbenault.testconcurrence.impl.CountingManagerAtomicInteger;
+import net.franckbenault.testconcurrence.impl.CountingManagerAtomicLong;
+import net.franckbenault.testconcurrence.impl.CountingManagerImpl;
+import net.franckbenault.testconcurrence.UnThread;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -40,62 +45,76 @@ public class CountingManagerTest {
 	}
 	
 	@Test
-	public void testIncrementNonAtomic() {
+	public void testIncrementNonAtomic() throws InterruptedException {
 	    CountingManager countingManager = new CountingManagerImpl();
 		  
-		// création d'une instance du Thread
+		//pool threads creation
 	    UnThread[] threads = new UnThread[NB_THREAD];
-	    // Activation du Thread
 	    
+	    //activation the threads
 	    for(int i=0; i<NB_THREAD; i++) {
 	    	threads[i]= new UnThread(countingManager, LOOP_IN_THREAD);
 	    	threads[i].start();
 	    }	
 	    
-	    // tant que le thread est en vie...
+	    //While one thread is alive
 	    while( isAlive(threads) ) {
-	      // faire un traitement...
+	      //print global status...
 	      System.out.println("Line writes by main "+countingManager.getCounter());
-	      try {
-	        // et faire une pause
-	        Thread.sleep(100);
-	      }
-	      catch (InterruptedException ex) {}
+	      Thread.sleep(100);
 	    }
 	    
 	    System.out.println("Line writes by main "+countingManager.getCounter());
-
 	    assertTrue(countingManager.getCounter()<=NB_THREAD*LOOP_IN_THREAD );
 	}
 	
 	@Test
-	public void testIncrementAtomic() {
-	    CountingManager countingManager = new CountingManagerAtomic();
+	public void testIncrementAtomicLong() throws InterruptedException {
+	    CountingManager countingManager = new CountingManagerAtomicLong();
 		  
-		// création d'une instance du Thread
+		//pool threads creation
 	    UnThread[] threads = new UnThread[NB_THREAD];
-	    // Activation du Thread
 	    
+	    //activation the threads
 	    for(int i=0; i<NB_THREAD; i++) {
 	    	threads[i]= new UnThread(countingManager, LOOP_IN_THREAD);
 	    	threads[i].start();
 	    }	
 	    
-	    // tant que le thread est en vie...
+	    //While one thread is alive
 	    while( isAlive(threads) ) {
-	      // faire un traitement...
+	      //print global status...
 	      System.out.println("Line writes by main "+countingManager.getCounter());
-	      try {
-	        // et faire une pause
-	        Thread.sleep(100);
-	      }
-	      catch (InterruptedException ex) {}
+	      Thread.sleep(100);
 	    }
 	    
-	      System.out.println("Line writes by main "+countingManager.getCounter());
-
+	    System.out.println("Line writes by main "+countingManager.getCounter());
 	    assertEquals(countingManager.getCounter(),NB_THREAD*LOOP_IN_THREAD );
 	}
 
+
+	@Test
+	public void testIncrementAtomicInteger() throws InterruptedException {
+	    CountingManager countingManager = new CountingManagerAtomicInteger();
+		  
+		//pool threads creation
+	    UnThread[] threads = new UnThread[NB_THREAD];
+	    
+	    //activation the threads
+	    for(int i=0; i<NB_THREAD; i++) {
+	    	threads[i]= new UnThread(countingManager, LOOP_IN_THREAD);
+	    	threads[i].start();
+	    }	
+	    
+	    //While one thread is alive
+	    while( isAlive(threads) ) {
+	      //print global status...
+	      System.out.println("Line writes by main "+countingManager.getCounter());
+	      Thread.sleep(100);
+	    }
+	    
+	    System.out.println("Line writes by main "+countingManager.getCounter());
+	    assertEquals(countingManager.getCounter(),NB_THREAD*LOOP_IN_THREAD );
+	}
 
 }

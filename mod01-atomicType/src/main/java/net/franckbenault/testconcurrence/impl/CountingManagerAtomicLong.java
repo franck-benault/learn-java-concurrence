@@ -1,12 +1,14 @@
-package net.franckbenault.testconcurrence;
+package net.franckbenault.testconcurrence.impl;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class CountingManagerAtomic implements CountingManager {
+import net.franckbenault.testconcurrence.CountingManager;
+
+public class CountingManagerAtomicLong implements CountingManager {
 
 	private AtomicLong counter;
 	
-	public CountingManagerAtomic() {
+	public CountingManagerAtomicLong() {
 		counter = new AtomicLong(0);
 	}
 	
