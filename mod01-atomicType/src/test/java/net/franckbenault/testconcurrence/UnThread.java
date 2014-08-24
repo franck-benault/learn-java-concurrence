@@ -5,20 +5,16 @@ package net.franckbenault.testconcurrence;
 public class UnThread extends Thread{
 	
 	private CountingManager countingManager;
-	private int size;
-	private int number;
+	private int loopSize;
 	
-	public UnThread(CountingManager countingManager, int size, int number) {
+	public UnThread(CountingManager countingManager, int loopSize) {
 		this.countingManager = countingManager;
-		this.size=size;
-		this.number=number;
+		this.loopSize=loopSize;
 	}
 	
 	
 	  public void run() {
-	    for(int i=0; i<size; i++) {
-	      // traitement
-	      //System.out.println("Ligne affichée par le thread "+number+" "+countingManager.getCounter());
+	    for(int i=0; i<loopSize; i++) {
 	      countingManager.increment();
 	      try {
 	        // pause
@@ -28,9 +24,5 @@ public class UnThread extends Thread{
 	    }
 	  }	
 
-
-	public int getNumber() {
-		return number;
-	}
 
 }

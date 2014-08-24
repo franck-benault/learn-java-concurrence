@@ -48,7 +48,7 @@ public class CountingManagerTest {
 	    // Activation du Thread
 	    
 	    for(int i=0; i<NB_THREAD; i++) {
-	    	threads[i]= new UnThread(countingManager, LOOP_IN_THREAD, i);
+	    	threads[i]= new UnThread(countingManager, LOOP_IN_THREAD);
 	    	threads[i].start();
 	    }	
 	    
@@ -58,14 +58,14 @@ public class CountingManagerTest {
 	      System.out.println("Line writes by main "+countingManager.getCounter());
 	      try {
 	        // et faire une pause
-	        Thread.sleep(60);
+	        Thread.sleep(100);
 	      }
 	      catch (InterruptedException ex) {}
 	    }
 	    
 	    System.out.println("Line writes by main "+countingManager.getCounter());
 
-	    //assertEquals(countingManager.getCounter(),NB_THREAD*LOOP_IN_THREAD );
+	    assertTrue(countingManager.getCounter()<=NB_THREAD*LOOP_IN_THREAD );
 	}
 	
 	@Test
@@ -77,7 +77,7 @@ public class CountingManagerTest {
 	    // Activation du Thread
 	    
 	    for(int i=0; i<NB_THREAD; i++) {
-	    	threads[i]= new UnThread(countingManager, LOOP_IN_THREAD, i);
+	    	threads[i]= new UnThread(countingManager, LOOP_IN_THREAD);
 	    	threads[i].start();
 	    }	
 	    
@@ -87,14 +87,14 @@ public class CountingManagerTest {
 	      System.out.println("Line writes by main "+countingManager.getCounter());
 	      try {
 	        // et faire une pause
-	        Thread.sleep(60);
+	        Thread.sleep(100);
 	      }
 	      catch (InterruptedException ex) {}
 	    }
 	    
 	      System.out.println("Line writes by main "+countingManager.getCounter());
 
-	    //assertEquals(countingManager.getCounter(),NB_THREAD*LOOP_IN_THREAD );
+	    assertEquals(countingManager.getCounter(),NB_THREAD*LOOP_IN_THREAD );
 	}
 
 
