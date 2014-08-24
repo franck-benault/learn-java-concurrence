@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<!-- module>atomicType</module -->
-		<module>atomicType</module>
+		<module>mod01-atomicType</module>
 	</modules>
 
 	<dependencyManagement>
