@@ -9,6 +9,7 @@
 		<!-- module>atomicType</module -->
 		<module>mod01-atomicType</module>
 		<module>mod02-ExcutorService</module>
+		<module>mod03-concurrentMap</module>
 	</modules>
 
 	<dependencyManagement>
