@@ -8,6 +8,7 @@
 	<modules>
 		<!-- module>atomicType</module -->
 		<module>mod01-atomicType</module>
+		<module>mod02-ExcutorService</module>
 	</modules>
 
 	<dependencyManagement>
