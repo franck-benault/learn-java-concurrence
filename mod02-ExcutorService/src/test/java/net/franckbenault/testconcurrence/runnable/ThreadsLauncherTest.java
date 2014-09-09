@@ -1,6 +1,5 @@
 package net.franckbenault.testconcurrence.runnable;
 
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 

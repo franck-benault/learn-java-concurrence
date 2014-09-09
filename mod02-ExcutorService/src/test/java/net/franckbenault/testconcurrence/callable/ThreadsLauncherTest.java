@@ -1,7 +1,5 @@
 package net.franckbenault.testconcurrence.callable;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class ThreadsLauncherTest {
