@@ -26,6 +26,7 @@ public class ConcurrentCalendarTestCase {
 		t.launch(calendar2, false, false);
 		
 		long diff = getDiffDays(calendar2, calendar1);
+		System.out.println(diff);
 		assertEquals(diff, ThreadsLauncher.loopSize*ThreadsLauncher.threadPoolSize);
 	}
 	
@@ -38,6 +39,7 @@ public class ConcurrentCalendarTestCase {
 		t.launch(calendar2, true, false);
 		
 		long diff = getDiffDays(calendar2, calendar1);
+		System.out.println(diff);
 		assertTrue(diff <= ThreadsLauncher.loopSize*ThreadsLauncher.threadPoolSize);
 	}
 	
@@ -50,6 +52,7 @@ public class ConcurrentCalendarTestCase {
 		t.launch(calendar2, true, true);
 		
 		long diff = getDiffDays(calendar2, calendar1);
+		System.out.println(diff);
 		assertEquals(diff, ThreadsLauncher.loopSize*ThreadsLauncher.threadPoolSize);
 	}
 

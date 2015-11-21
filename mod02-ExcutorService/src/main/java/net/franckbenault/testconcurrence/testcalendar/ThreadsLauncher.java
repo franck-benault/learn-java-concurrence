@@ -12,23 +12,22 @@ public class ThreadsLauncher {
 	public void launch(Calendar calendar, boolean isParallel,
 			boolean isSynchronized) throws InterruptedException {
 
-		ExecutorService executor = Executors.newFixedThreadPool(threadPoolSize);
-
+		ExecutorService executor;
 		if (isParallel) {
-			for (int i = 1; i <= threadPoolSize; i++) {
-				WorkerThread workerThread = new WorkerThread(i, loopSize, calendar, isSynchronized);
-				executor.submit(workerThread);
-			}
-
-			executor.shutdown();
-			while (!executor.isTerminated()) {
-				Thread.sleep(10);
-			}
+			executor = Executors.newFixedThreadPool(threadPoolSize);
 		} else {
-			for( int i=1; i<=threadPoolSize; i++) {
-				WorkerThread workerThread = new WorkerThread(i, loopSize, calendar, isSynchronized);
-				workerThread.call();
-			}
+			executor = Executors.newSingleThreadExecutor();
+		}
+
+		for (int i = 1; i <= threadPoolSize; i++) {
+			WorkerThread workerThread = new WorkerThread(i, loopSize, calendar,
+					isSynchronized);
+			executor.submit(workerThread);
+		}
+
+		executor.shutdown();
+		while (!executor.isTerminated()) {
+			Thread.sleep(10);
 		}
 	}
 }
