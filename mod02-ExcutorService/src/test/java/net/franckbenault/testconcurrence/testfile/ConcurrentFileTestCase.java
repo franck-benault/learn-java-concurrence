@@ -36,6 +36,7 @@ public class ConcurrentFileTestCase {
 	public int countLines(File file) throws IOException {
 		LineNumberReader reader = new LineNumberReader(new FileReader(file));
 		int cnt = 0;
+		@SuppressWarnings("unused")
 		String lineRead;
 		while ((lineRead = reader.readLine()) != null) {
 			//System.out.println(lineRead);
