@@ -36,6 +36,7 @@ public class ThreadsLauncher {
 
 		executor.shutdown();
 		while (!executor.isTerminated()) {
+			System.out.println("nbThreads "+ Thread.getAllStackTraces().keySet().size());
 			Thread.sleep(10);
 		}
 
