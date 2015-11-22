@@ -10,6 +10,7 @@
 		<module>mod01-atomicType</module>
 		<module>mod02-ExcutorService</module>
 		<module>mod03-concurrentMap</module>
+		<module>mod00-threads</module>
 	</modules>
 
 	<dependencyManagement>
