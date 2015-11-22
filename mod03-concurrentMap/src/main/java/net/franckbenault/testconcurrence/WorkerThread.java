@@ -3,29 +3,39 @@ package net.franckbenault.testconcurrence;
 public class WorkerThread  implements Runnable {
 
 	private int threadNumber;
-	private int loopSize;
+	private Singleton singleton;
 	
-	public WorkerThread(int threadNumber, int loopSize) {
+	public WorkerThread(int threadNumber, Singleton singleton) {
 		
 		this.threadNumber = threadNumber;
-		this.loopSize = loopSize;
+		this.singleton = singleton;
+	}
+	
+	private void waiting() {
+		try {
+			System.out.println("thread "+threadNumber+" is waiting");
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void run() {
 		
-		for(int i=1; i<=loopSize; i++) {
-			try {
-				System.out.println(command(i));
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		int resource= singleton.lockResource();
+		waiting();
+		
+		while(resource!=-1) {
+			waiting();
+			resource= singleton.lockResource();
+			
 		}
+		
+		waiting();
+		System.out.println("thread "+threadNumber+" is ending");
+		singleton.unlockResource(resource);
 	}
 	
-	public String command(int i) {
-		return "Runable thread "+threadNumber+"-loopNumber "+i;
-	}	
 	
 	public String toString() {
 		return "Thread "+threadNumber;

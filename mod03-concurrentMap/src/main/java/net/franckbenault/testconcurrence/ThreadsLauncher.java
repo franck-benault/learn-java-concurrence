@@ -5,14 +5,15 @@ import java.util.concurrent.Executors;
 
 public class ThreadsLauncher {
 
-	private int threadPoolSize = 10;
+	private int threadPoolSize = 100;
 	
 	public void launch() throws InterruptedException {
 		
 		ExecutorService executor = Executors.newFixedThreadPool(threadPoolSize);
 		
+		Singleton singleton = Singleton.getInstance();
 		for(int i=1; i<=threadPoolSize; i++) {
-			WorkerThread workerThread = new WorkerThread(i, 20);
+			WorkerThread workerThread = new WorkerThread(i, singleton );
 			executor.submit(workerThread);
 		}
 		

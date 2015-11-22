@@ -12,14 +12,13 @@ public class Singleton {
 	
 	/** private constructor */
 	private Singleton() {
-		
 		for(int i=0; i<SIZE ; i++) {
 			freeResources.put(i,true);
 		}
 	
 	}
 	
-	public int lockResource() {
+	public synchronized int lockResource() {
 		for(int i=0; i<SIZE ; i++) {
 			if(freeResources.remove(i)!=null) {
 				return i;
@@ -28,9 +27,9 @@ public class Singleton {
 		return -1;
 	}
 	
-	public void unlockResource(int index) {
+	public synchronized void unlockResource(int index) {
 		if(index>=0 && index<SIZE)
-			freeResources.put(index, true);
+			freeResources.putIfAbsent(index, true);
 	}
 
 	/** unique instance */
