@@ -10,7 +10,9 @@ import java.io.LineNumberReader;
 import net.franckbenault.testconcurrence.testfile.ThreadsLauncher;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -22,14 +24,14 @@ public class ConcurrentFileTestCase {
 
 	private File tempFile;
 
+	
 	@Before
 	public void before() throws IOException {
 		tempFile = testFolder.newFile("file.txt");
-
 	}
 
 	@After
-	public void after() {
+	public void after() throws InterruptedException {
 		tempFile.delete();
 	}
 

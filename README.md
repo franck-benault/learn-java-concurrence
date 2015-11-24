@@ -15,3 +15,6 @@ But it cannot do anything (alternative solution is the lock)
 # ExecutorService
 It allows to manage a set of Threads
 
+It accepts Runnables and Callables
+
+
