@@ -1,20 +1,11 @@
 package net.franckbenault.testconcurrence.testfile;
 
-import static org.junit.Assert.*;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestRule;
-import org.junit.rules.Timeout;
-import org.junit.runners.model.TestTimedOutException;
 
 public class SleepTestCase {
-
-	@Rule public final TestRule timeout = Timeout.builder()
-            .withTimeout(200, TimeUnit.MILLISECONDS)
-            .withLookingForStuckThread(true).build();
 	
 	@Test
 	public void test01OldWay() throws InterruptedException {
