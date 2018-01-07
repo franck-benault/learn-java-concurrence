@@ -17,7 +17,7 @@ It allows to manage a set of Threads
 
 It accepts Runnables and Callables
 
-
+| method                                                                | results                                |
 | --------------------------------------------------------------------- | -------------------------------------- |
 | AnnotationEventBenchmarks.sendClassAnnotationEvents                   | thrpt   15  2196,358 ±  754,511  ops/s |
 | AnnotationEventBenchmarks.sendMethodAnnotationEvents_Selection_All    | thrpt   15  2724,653 ±  561,884  ops/s |
