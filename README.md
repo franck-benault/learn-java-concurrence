@@ -28,5 +28,4 @@ It accepts Runnables and Callables
 | AnnotationEventBenchmarks.sendClassAnnotationEvents_Runningtime       |  avgt   15   352,456 ±   85,810  us/op |
 | Audit4jConsoleBenchmarks.sendEventsAvgTime                            |  avgt   15   212,040 ±   29,622  us/op |
 | GeneralBenchmarks.sendEventsAvgTime                                   |  avgt   15   350,052 ±   56,742  us/op |
-| Slf4jBenchmarks.sslf4jAvgTime                                         |  avgt   15   176,995 ±   54,869  us/op |
-| --------------------------------------------------------------------- | -------------------------------------- |
+| Slf4jBenchmarks.sslf4jAvgTime                                         |  avgt   15   176,995 ±   54,869  us/op | 
